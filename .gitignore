@@ -2,7 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+# For Api_key
+config.py
 # C extensions
 *.so
 
@@ -127,3 +128,27 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
