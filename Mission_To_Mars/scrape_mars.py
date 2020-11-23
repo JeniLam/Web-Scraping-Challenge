@@ -51,6 +51,46 @@ def scrape():
     mars_facts_html.replace('\n', '')
 
     ## Mars Hemispheres
+    main_url = 'https://astrogeology.usgs.gov'
+    mars_hemis_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(mars_hemis_url)
+    html = browser.html
+    soup = bs(html, 'html.parser')
+    imgs_titles = soup.find_all('div', class_="item")
+    hem_title_image_urls = []
+    main_url = 'https://astrogeology.usgs.gov'
+    # https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_replace
+    for item in imgs_titles:
+    #get titles
+        title = item.find('h3').text
+        title = title.replace('Enhanced', "")
+        
+        
+        # get link that leads to full res image
+        start_url=item.find('a', class_='itemLink product-item')['href']
+        
+        
+        #go to individual mars hemisphere page
+        browser.visit(main_url + start_url)
+    #     https://splinter.readthedocs.io/en/latest/matchers.html
+        browser.is_element_present_by_css('.downloads',wait_time = 5)
+        
+        #now at individual hemisphere page to grap full res image
+        image_html = browser.html
+        
+        #parse with BeautifulSoup
+        soup = bs(image_html,'html.parser')
+        
+        #get full res image source
+        fullRes_image = soup.find('div', class_='downloads')
+        fullRes_url = fullRes_image.find('li').find('a')['href']
+        
+
+        #append into a list of dictionaries
+        hemImageUrl_dict = {}
+        hemImageUrl_dict['title'] = title
+        hemImageUrl_dict['fullResImg_url'] = fullRes_url
+        hem_title_image_urls.append(hemImageUrl_dict)
 
 
     mars_dict ={
