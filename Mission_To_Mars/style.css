@@ -4,8 +4,17 @@ h1 {
    font-size: 50px;
 }
 
+h2 {
+    text-align: center;
+    padding-left: 50 px;
+}
+
+h3 {
+
+}
+
 #top.container{
     padding: 20px;
-    background-color: lightcyan;
+    background-color: rgba(232, 238, 238, 0.863);
  
 }

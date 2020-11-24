@@ -48,25 +48,28 @@
       <table class="table">
         <thead class="thead-light">
           {{mars_facts_html}}
+          <hr>
     </div>
-    <hr>
-    <h2 style = "text-align: center;"> Mars Hemispheres</h2>
-    <div class="card-deck">
-      <hr>
-      <div class ="col-md-10">
-        {% for image in mars_dict.hemImageUrl_dict}
-        <div class ="col-md-6">
-          <div class="card" style="width: 18rem;">
-            <img src={{image.fullResImg_url}} class="card-img-top" alt={{image.title}}>
-            <div class="card-body">
-              <p class="card-text">{{image.title}}</p>
+    <div class="row">
+      <h2> Mars Hemispheres</h2>
+      <div class="card-deck">
+        <hr>
+        <div class="col-md-12">
+          {% for image in mars_dict.hemImageUrl_dict%}
+          <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+              <img src={{image.fullResImg_url}} class="card-img-top" alt={{image.title}}>
+              <div class="card-body">
+                <p class="card-text">{{image.title}}</p>
+              </div>
             </div>
-          </div>
-          <!-- image.title and image.fullResImg_url -->
+            <!-- image.title and image.fullResImg_url -->
 
+          </div>
         </div>
       </div>
     </div>
+
 
   </div>
 </body>
