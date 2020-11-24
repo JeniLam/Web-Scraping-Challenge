@@ -1,5 +1,7 @@
 from splinter import Browser
+import pandas as pd
 from bs4 import BeautifulSoup as bs
+import requests
 from webdriver_manager.chrome import ChromeDriverManager
 
 def init_browser():
@@ -8,7 +10,7 @@ def init_browser():
 
 def scrape():
     browser=init_browser()
-    mars_dict{}
+    mars_dict={}
     ## Mars News
     mars_news_url = 'https://mars.nasa.gov/news/'
     browser.visit(mars_news_url)
@@ -72,7 +74,7 @@ def scrape():
         
         #go to individual mars hemisphere page
         browser.visit(main_url + start_url)
-    #     https://splinter.readthedocs.io/en/latest/matchers.html
+        # https://splinter.readthedocs.io/en/latest/matchers.html
         browser.is_element_present_by_css('.downloads',wait_time = 5)
         
         #now at individual hemisphere page to grap full res image
