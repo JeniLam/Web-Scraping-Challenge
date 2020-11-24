@@ -5,7 +5,7 @@ import requests
 from webdriver_manager.chrome import ChromeDriverManager
 
 def init_browser():
-    executable_path = {"executable_path": ChromeDriverManager().install()}
+    executable_path = {'executable_path': ChromeDriverManager().install()}
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():
@@ -100,6 +100,7 @@ def scrape():
         "Latest News Paragraph": latest_news_paragraph,
         "Featured Image URL": featured_image_url,
         "Mars Fact Table": mars_facts_html,
+        "Mars Hemispheres": hemImageUrl_dict
     }
 
     # Close the browser after scraping

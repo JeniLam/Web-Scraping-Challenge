@@ -16,3 +16,18 @@ def scrape():
 
     # Return template and data
     return render_template('index.html', mars = mars_dict)
+
+@app.route("/scrape")
+def scrape():
+
+    mars_dict=mongo.db.mars_dict
+    mars_data = scrape_mars.scrape()
+
+    # update mongo database using update and upsert=True
+    mars_dict({}, mars_data, upsert=True)
+    # https://stackoverflow.com/questions/14343812/redirecting-to-url-in-flask
+    return redirect ("/", code=302)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
