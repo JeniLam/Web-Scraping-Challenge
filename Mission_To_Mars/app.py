@@ -20,8 +20,10 @@ def index():
 def scrape():
 
     mars_database=mongo.db.mars_info
+    print(f"my name is yolanda")
 
     mars_data = scrape_mars.scrape()
+    print(mars_data)
 
     # update mongo database using update and upsert=True
     mars_database.update({},mars_data, upsert=True)

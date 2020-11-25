@@ -47,7 +47,9 @@
       <h3 class="tex-left"> Mars Data Profile</h3>
       <table class="table">
         <thead class="thead-light">
-          {{mars.mars_facts_html}}
+          <span>
+          {{mars.mars_facts_html | safe}}
+        </span>
           <hr>
     </div>
     <div class="row">

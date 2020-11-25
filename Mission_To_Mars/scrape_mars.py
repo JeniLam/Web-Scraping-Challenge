@@ -23,7 +23,7 @@ def scrape():
     news = soup.find_all('div', class_='list_text')
 
     # use news variable to get the latest news
-    latest_news = news [0]
+    latest_news = news[0]
 
     # grab title and paragraph text
     latest_news_title = latest_news.find('div', class_='content_title').text
@@ -41,7 +41,7 @@ def scrape():
     image_url = soup.find('section', class_='main_feature').a['data-fancybox-href']
     image_url = image_url.replace("'","")
     featured_image_url = 'https://www.jpl.nasa.gov/' + image_url
-    return featured_image_url
+    # return featured_image_url
 
     ## Mars Facts
     mars_facts_url = 'https://space-facts.com/mars'
@@ -101,11 +101,11 @@ def scrape():
 
 
     mars_dict ={
-        "Latest News Title" : latest_news_title,
-        "Latest News Paragraph": latest_news_paragraph,
-        "Featured Image URL": featured_image_url,
-        "Mars Fact Table": mars_facts_html,
-        "Mars Hemispheres": hemImageUrl_dict
+        "latest_news_title": latest_news_title,
+        "latest_news_paragraph": latest_news_paragraph,
+        "featured_image_url": featured_image_url,
+        "mars_facts_html": mars_facts_html,
+        "hemImageUrl_dict": hemImageUrl_dict
     }
 
     # Close the browser after scraping
