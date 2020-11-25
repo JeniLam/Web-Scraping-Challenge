@@ -31,7 +31,7 @@
     <div class="row">
       <div class='col-md-12'>
         <h3>Latest Mars News</h3>
-        <h4>{{mars.latest_news_title}}</h4>
+        <h5>{{mars.latest_news_title}}</h5>
         <p>{{mars.latest_news_paragraph}}</p>
       </div>
     </div>
@@ -59,11 +59,13 @@
         <hr>
         <div class="col-md-12">
           {% for image in mars.hemImageUrl_dict%}
-          <div class="col-md-6">
-            <div class="card" style="width: 18rem;">
-              <img src={{image.fullResImg_url}} class="card-img-top" alt={{image.title}}>
-              <div class="card-body">
-                <p class="card-text">{{image.title}}</p>
+          <div class="col-6 border">
+            <!-- <div class="card" style="width: 18rem;"> -->
+              <br>
+              <div>
+              <img width="512 px" height="512 px" src="{{image.fullResImg_url}}"">
+              </div>
+                <hr> {{image.title}} </h4>
               </div>
             </div>
           {%endfor%}
