@@ -22,7 +22,7 @@
     <div class="jumbotron-fluid text-center rounded">
       <h1 class="font-weight-bold">Mission to Mars</h1>
       <br>
-      <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+      <a class="btn btn-primary btn-lg" href="../scrape" role="button">Scrape New Data</a>
     </div>
   </div>
   <br>
@@ -31,8 +31,8 @@
     <div class="row">
       <div class='col-md-12'>
         <h3>Latest Mars News</h3>
-        <h4>{{latest_news_title}}</h4>
-        <p>{{latest_news_paragraph}}</p>
+        <h4>{{mars.latest_news_title}}</h4>
+        <p>{{mars.latest_news_paragraph}}</p>
       </div>
     </div>
     <div class="card">
@@ -41,13 +41,13 @@
         <p class="card-text">Below is the featured mars image currently on jpl.nasa.gov.</p>
         <p class="card-text"><small class="text-muted">Last updated when you clicked the button</small></p>
       </div>
-      <img src={{featured_image_url}} class="card-img-bottom" alt="Featured Mars Image">
+      <img src={{mars.featured_image_url}} class="card-img-bottom" alt="Featured Mars Image">
     </div>
     <div class="col-md-6">
       <h3 class="tex-left"> Mars Data Profile</h3>
       <table class="table">
         <thead class="thead-light">
-          {{mars_facts_html}}
+          {{mars.mars_facts_html}}
           <hr>
     </div>
     <div class="row">
@@ -55,7 +55,7 @@
       <div class="card-deck">
         <hr>
         <div class="col-md-12">
-          {% for image in mars_dict.hemImageUrl_dict%}
+          {% for image in mars.hemImageUrl_dict%}
           <div class="col-md-6">
             <div class="card" style="width: 18rem;">
               <img src={{image.fullResImg_url}} class="card-img-top" alt={{image.title}}>
@@ -63,7 +63,7 @@
                 <p class="card-text">{{image.title}}</p>
               </div>
             </div>
-            <!-- image.title and image.fullResImg_url -->
+          {%endfor%}
 
           </div>
         </div>

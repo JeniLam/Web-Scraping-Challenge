@@ -11,7 +11,7 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 @app.route('/')
 def index():
     # find one record of data from the mongo database
-    mars_dict = mongo.db_mars_dict.find_one()
+    mars_dict = mongo.db.mars_info.find_one()
 
     # Return template and data
     return render_template('index.html', mars = mars_dict)
@@ -19,11 +19,12 @@ def index():
 @app.route("/scrape")
 def scrape():
 
-    mars_dict=mongo.db.mars_dict
+    mars_database=mongo.db.mars_info
+
     mars_data = scrape_mars.scrape()
 
     # update mongo database using update and upsert=True
-    mars_dict({}, mars_data, upsert=True)
+    mars_database.update({},mars_data, upsert=True)
     # https://stackoverflow.com/questions/14343812/redirecting-to-url-in-flask
     return redirect ("/", code=302)
 

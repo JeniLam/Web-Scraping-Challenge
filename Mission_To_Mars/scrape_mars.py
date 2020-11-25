@@ -1,10 +1,12 @@
 from splinter import Browser
+import time
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 import requests
 from webdriver_manager.chrome import ChromeDriverManager
 
 def init_browser():
+    # browser = Browser(“chrome”, executable_path=“chromedriver”, headless=True)
     executable_path = {'executable_path': ChromeDriverManager().install()}
     return Browser("chrome", **executable_path, headless=False)
 
@@ -30,10 +32,16 @@ def scrape():
     ## JPL Mars Space Images
     jpl_img_url ='https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(jpl_img_url)
-    jpl_img_url ='https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-    browser.visit(jpl_img_url)
+    full_image = browser.find_by_id('full_image')
+    browser.is_element_present_by_text('more info', wait_time= 2)
+    # more_info = browser.links.find_by_partial_text('more info')
+    # more_info.click()
+    html = browser.html
+    soup = bs(html, 'html.parser')
     image_url = soup.find('section', class_='main_feature').a['data-fancybox-href']
+    image_url = image_url.replace("'","")
     featured_image_url = 'https://www.jpl.nasa.gov/' + image_url
+    return featured_image_url
 
     ## Mars Facts
     mars_facts_url = 'https://space-facts.com/mars'
@@ -66,12 +74,10 @@ def scrape():
     #get titles
         title = item.find('h3').text
         title = title.replace('Enhanced', "")
-        
-        
+                
         # get link that leads to full res image
         start_url=item.find('a', class_='itemLink product-item')['href']
-        
-        
+                
         #go to individual mars hemisphere page
         browser.visit(main_url + start_url)
         # https://splinter.readthedocs.io/en/latest/matchers.html
@@ -87,7 +93,6 @@ def scrape():
         fullRes_image = soup.find('div', class_='downloads')
         fullRes_url = fullRes_image.find('li').find('a')['href']
         
-
         #append into a list of dictionaries
         hemImageUrl_dict = {}
         hemImageUrl_dict['title'] = title
