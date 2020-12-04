@@ -105,7 +105,7 @@ def scrape():
         "latest_news_paragraph": latest_news_paragraph,
         "featured_image_url": featured_image_url,
         "mars_facts_html": mars_facts_html,
-        "hemImageUrl_dict": hemImageUrl_dict
+        "hemImageUrl_dict": hem_title_image_urls
     }
 
     # Close the browser after scraping
